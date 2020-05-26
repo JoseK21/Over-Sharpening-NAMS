@@ -9,26 +9,9 @@
 %include "_kernelSharpening.asm"
 %include "_kernelOverSharpening.asm"
 
-; CONSTANTS
-section .data 
-    newline db 10, 0
-
-    max_dec equ 255
-    min_dec equ 0
-
-    add_0 equ "0"
-    add_00 equ "00"
-    add_000 equ "000"
-
-    _10 equ 10
-    _100 equ 100
-
-    name dd 0
-
 ; VARIABLES
 section .bss 
     number resb 3
-    length_number resb 10
 
     width_number resb 10
     height_number resb 10

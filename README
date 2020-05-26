@@ -1,21 +1,31 @@
-r15 : initial position of pixels to process [contador_pixels] : contador of read pixel >Usar<
+#Proyecto Individual
 
+## Diseño e Implementación de una aplicación para Nitidez en Imágenes
+
+## Registros Utilizados
+
+```NASM
+
+r15 ; initial position of pixels to process [contador_pixels] : contador of read pixel >Usar<
+
+r13 ; width
+
+r10 ; index of cols x
+
+r8 ; aux to save current initial position
+
+r7 ; acomulador de operaciones \/
+
+```
+
+
+## Variables Utilizadas
 [total_pixels_number] : total pixels to read x
-
-r13 : width
-
-[height_number] : height
-
-r10 : index of cols x
 
 [total_pixels_number_000] : total pixels to read (include 000s) x
 
-r8 : aux to save current initial position
+[height_number] : height
 
-r7 : acomulador de operaciones \/
-
-LOG
-    r15: current position [contador_pixels] : index pixel & r13 : width
 
 Formule
     # = pos +- width*3 +- Num
