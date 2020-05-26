@@ -4,33 +4,42 @@
 
 ## Registros Utilizados
 
-```NASM
+```bash
 
-r15 ; initial position of pixels to process [contador_pixels] : contador of read pixel >Usar<
-
-r13 ; width
-
-r10 ; index of cols x
-
-r8 ; aux to save current initial position
-
-r7 ; acomulador de operaciones \/
+r15 ; Índice inicial de pixels a procesar
+r14 : Contador de pixels
+r13 ; Ancho de imagen
+r10 ; Contador de columnas
+r9 : Contador de celdas
+r8 ; Registro temporal para retornar a la posición actual
 
 ```
 
 
 ## Variables Utilizadas
-[total_pixels_number] : total pixels to read x
+```bash
 
-[total_pixels_number_000] : total pixels to read (include 000s) x
+total_pixels_number : total pixels
 
-[height_number] : height
+total_pixels_number_000 : total de pixels (incluyendo 000s)
+
+index_pos_number : Índice inicial
+
+height_number : Altura de imagen
+```
 
 
-Formule
+## Algoritmo Utilizado
+```bash
+
     # = pos +- width*3 +- Num
 
-Example: 
+    Esta ecuación es la base para el algoritmo implementado para recorrer los pixcels del archivo (Imagen)
+```
+
+## Ejemplo del algoritmo: 
+```bash
+
     1: 0  => r8 = r15 - r13*3 - 9
     2: 3  => r8 = r15 - r13*3 - 6
     3: 6  => r8 = r15 - r13*3 - 3
@@ -40,11 +49,14 @@ Example:
     7: 108 => r8 = r15 + r13*3 + 3
     8: 111 => r8 = r15 + r13*3 + 6
     9: 114 => r8 = r15 + r13*3 + 9
+```
 
 
-EXAMPLE : 16x16
+## Ejemplo : 16x16
+```bash
 
 ----------------------------------SIN BORDES----------------------------------
+
         1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16
 
         000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000     1
@@ -63,9 +75,13 @@ EXAMPLE : 16x16
         153 173 190 190 190 190 190 190 190 190 190 190 190 190 173 153     14
         000 164 166 166 166 166 166 166 166 166 166 166 166 166 165 000     15
         000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000     16
+```
+```bash
 
 ----------------------------------CON BORDES----------------------------------
+
         -|----1...2...3...4...5...6...7...8...9..10..11..12..13..14..15..16--|--
+
         000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000
 | 057 | 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 | 102 |
 | 111 | 000 000 000 000 000 000 151 152 152 152 152 150 000 000 000 000 000 000 | 156 |
@@ -84,9 +100,13 @@ EXAMPLE : 16x16
 | 813 | 000 000 164 166 166 166 166 166 166 166 166 166 166 166 166 165 000 000 | 858 |
 | 867 | 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 | 912 |
         000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 
+```
 
 
-PASOS PARA DEMOSTRACIÓN
+## Pasos Para la Demostración
+```bash
+
 1. Python >>> python3 code_python.py
 2. NASM   >>> sudo ./generar.sh code
 3. Python >>> python3 show_images.py
+```

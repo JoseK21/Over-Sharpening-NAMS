@@ -13,7 +13,6 @@
 section .bss 
     number resb 3
 
-    width_number resb 10
     height_number resb 10
 
     total_pixels_number resb 10
@@ -180,8 +179,6 @@ _reset:
     mov r9, 0 ; r9 : contador de celdas (9)
 
     jmp _loopPixel
-    ;jmp _loopPixel_Over_Sharpening
-
 
 _loopPixel_Over_Sharpening:
     mov r8, r15 ; pos edited to start
